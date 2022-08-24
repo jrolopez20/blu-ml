@@ -1,1 +1,1 @@
-# blu-ml
+# Notebooks for Finance Factoring and Machine Learning integration
