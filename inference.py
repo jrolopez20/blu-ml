@@ -28,7 +28,11 @@ predict_fn
     model (sklearn model) returned model loaded from model_fn above
 """
 def predict_fn(input_data, model):
-    return model.predict(input_data)
+    prediction = model.predict(input_data)
+    return {
+        'prediction': prediction.tolist(), 
+        'sample': 'Hello world'
+    }
 
 """
 output_fn
@@ -38,6 +42,5 @@ output_fn
 """
 
 def output_fn(prediction, content_type):
-    res = int(prediction[0])
-    respJSON = {'Output': res}
-    return respJSON
+    res = json.dumps({'Output': prediction})
+    return res
