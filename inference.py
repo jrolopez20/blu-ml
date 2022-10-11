@@ -29,18 +29,17 @@ predict_fn
 """
 def predict_fn(input_data, model):
     prediction = model.predict(input_data)
+
     return {
         'prediction': prediction.tolist(), 
-        'sample': 'Hello world'
+        'sample': 'Live is good'
     }
 
 """
 output_fn
     prediction: the returned value from predict_fn above
     content_type: the content type the endpoint expects to be returned. Ex: JSON, string
-
 """
-
 def output_fn(prediction, content_type):
     res = json.dumps({'Output': prediction})
     return res
