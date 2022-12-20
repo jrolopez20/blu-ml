@@ -28,12 +28,7 @@ predict_fn
     model (sklearn model) returned model loaded from model_fn above
 """
 def predict_fn(input_data, model):
-    prediction = model.predict(input_data)
-
-    return {
-        'prediction': prediction.tolist(), 
-        'sample': 'Live is good'
-    }
+    return model.predict(input_data)
 
 """
 output_fn
@@ -41,5 +36,5 @@ output_fn
     content_type: the content type the endpoint expects to be returned. Ex: JSON, string
 """
 def output_fn(prediction, content_type):
-    res = json.dumps({'Output': prediction})
+    res = json.dumps({'Output': prediction.tolist()})
     return res
